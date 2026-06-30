@@ -25,19 +25,17 @@ import {
   InteractionRequiredAuthError,
 } from '@azure/msal-browser';
 
-const clientId = import.meta.env.VITE_ENTRA_CLIENT_ID ?? '';
-const tenantId = import.meta.env.VITE_ENTRA_TENANT_ID ?? '';
+const clientId = import.meta.env.VITE_CIAM_CLIENT_ID ?? '';
+const tenantId = import.meta.env.VITE_CIAM_TENANT_ID ?? '';
 // Authority do tenant workforce (NÃO 'common' — alinhado ao gateway fail-closed AC-6).
 const authority = tenantId
   ? `https://login.microsoftonline.com/${tenantId}`
   : 'https://login.microsoftonline.com/organizations';
-const redirectUri = import.meta.env.VITE_ENTRA_REDIRECT_URI ?? window.location.origin;
+const redirectUri = window.location.origin; // SPA sempre usa window.location.origin
 
 // Scope da API exposta pela App Registration (ex.: api://<client-id>/purchase.write).
 // Fallback para o formato padrão se VITE_ENTRA_SCOPE não estiver definido.
-const apiScope =
-  import.meta.env.VITE_ENTRA_SCOPE ??
-  (clientId ? `api://${clientId}/purchase.write` : 'openid');
+const apiScope = `api://${clientId}/purchase.write`;
 
 /** True quando as variáveis mínimas de identidade v2 estão configuradas. */
 export const isEntraConfigured = (): boolean =>
