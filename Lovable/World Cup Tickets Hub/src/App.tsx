@@ -77,8 +77,8 @@ const App = () => (
           <BrowserRouter>
             <Suspense fallback={<PageLoader />}>
               <Routes>
-                {/* Admin Routes */}
-                <Route path="/admin" element={<AdminLayout />}>
+                {/* Admin Routes — Quartas (F3): gate via Entra workforce + App Role "Admin". */}
+                <Route path="/admin" element={<AdminAuthProvider><AdminLayout /></AdminAuthProvider>}>
                   <Route index element={<Dashboard />} />
                   <Route path="matches" element={<AdminMatches />} />
                   <Route path="stadiums" element={<AdminStadiums />} />
