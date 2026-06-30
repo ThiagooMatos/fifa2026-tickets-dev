@@ -5,7 +5,7 @@ name: Deploy Frontend (FIFA 2026 Web)
 #
 # Triggers:
 #   - workflow_dispatch (manual): permite escolher backend_url e app_name
-#   - push em main: roda quando algo no Lovable/ ou neste workflow muda
+#   - push em main: roda quando algo no Lovable / ou neste workflow muda
 
 on:
   workflow_dispatch:
