@@ -11,6 +11,7 @@ import { MsalProvider } from "@azure/msal-react";
 import { msalInstance } from "@/lib/authV2";
 import Layout from "@/components/layout/Layout";
 import Index from "./pages/Index";
+import { AdminAuthProvider } from "@/contexts/AdminAuthProvider";
 
 // Páginas públicas mais leves: lazy para reduzir bundle inicial.
 const Matches = lazy(() => import("./pages/Matches"));
