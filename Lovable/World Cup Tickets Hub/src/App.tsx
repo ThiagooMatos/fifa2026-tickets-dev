@@ -7,11 +7,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartProvider";
 import { AuthProvider } from "@/contexts/AuthProvider";
+// Story 2.11 / Quartas (F3) — provider do login ADMIN workforce (Entra ID + App Role),
+// escopado à área /admin. Instância MSAL separada da CIAM (ver src/lib/authAdmin.ts).
+import { AdminAuthProvider } from "@/contexts/AdminAuthProvider";
 import { MsalProvider } from "@azure/msal-react";
 import { msalInstance } from "@/lib/authV2";
 import Layout from "@/components/layout/Layout";
 import Index from "./pages/Index";
-import { AdminAuthProvider } from "@/contexts/AdminAuthProvider";
 
 // Páginas públicas mais leves: lazy para reduzir bundle inicial.
 const Matches = lazy(() => import("./pages/Matches"));
