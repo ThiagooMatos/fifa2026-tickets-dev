@@ -70,13 +70,13 @@ function deriveKnownAuthorityHost(authority: string): string {
 
 const knownAuthorityHost = deriveKnownAuthorityHost(ciamAuthority);
 
-const redirectUri = import.meta.env.VITE_ENTRA_REDIRECT_URI ?? window.location.origin;
+const redirectUri = window.location.origin;
 
 // Scope da API exposta pela App Registration SPA no tenant CIAM (ex.:
 // api://<client-id>/purchase.write). Fallback para o formato padrão se
 // VITE_ENTRA_SCOPE não estiver definido (reaproveitado da convenção de 2.3).
 const apiScope =
-  import.meta.env.VITE_ENTRA_SCOPE ??
+  import.meta.env.VITE_CIAM_SCOPE ??
   (clientId ? `api://${clientId}/purchase.write` : 'openid');
 
 /**
